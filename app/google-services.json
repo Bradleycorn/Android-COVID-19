@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "400125446277",
+    "firebase_url": "https://bradleycorn-covid-19.firebaseio.com",
+    "project_id": "bradleycorn-covid-19",
+    "storage_bucket": "bradleycorn-covid-19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400125446277:android:4661c9ce9f14678f4a41ec",
+        "android_client_info": {
+          "package_name": "net.bradball.android.covid19.ky"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400125446277-miopue3ctcd2b5k5t4pqfidqn0dq295e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpgUQZys_AG7y4f_KQnV31LI1JiHWkobQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400125446277-miopue3ctcd2b5k5t4pqfidqn0dq295e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400125446277:android:e76ef9bc8b7391ae4a41ec",
+        "android_client_info": {
+          "package_name": "net.bradball.android.covid19.ky.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400125446277-miopue3ctcd2b5k5t4pqfidqn0dq295e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpgUQZys_AG7y4f_KQnV31LI1JiHWkobQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400125446277-miopue3ctcd2b5k5t4pqfidqn0dq295e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
