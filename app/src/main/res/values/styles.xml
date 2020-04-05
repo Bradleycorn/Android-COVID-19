@@ -27,4 +27,54 @@
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Primary</item>
     </style>
 
+
+    <style name="SciChart_KY_Covid" parent="SciChart_BaseStyle">
+        <!-- Background defaults -->
+        <item name="sciChartBackground">@android:color/transparent</item>
+        <item name="legendBackground">?attr/colorSurface</item>
+        <item name="axisTooltipBackground">?attr/colorSurface</item>
+
+        <item name="renderableSeriesAreaBorderColor">?android:attr/colorBackground</item>
+        <item name="renderableSeriesAreaFillColor">?android:attr/colorBackground</item>
+
+        <item name="defaultTextColor">#9e9e9e</item>
+
+        <!-- Axis defaults -->
+        <item name="tickTextColor">#9e9e9e</item>
+        <item name="tickTextSize">10sp</item>
+        <item name="majorGridLinesColor">#9e9e9e</item>
+        <item name="minorGridLinesColor">#9e9e9e</item>
+        <item name="axisBandsColor">#fefefe</item>
+
+        <!-- Modifier defaults -->
+        <item name="rolloverLineColor">#9e9e9e</item>
+        <item name="cursorLineColor">#9e9e9e</item>
+        <item name="rubberBandStrokeColor">#9e9e9e</item>
+        <item name="rubberBandFillColor">#9e9e9e</item>
+        <item name="axisTooltipTextColor">#9e9e9e</item>
+
+        <!-- MountainSeries defaults -->
+        <item name="mountainLineColor">?attr/colorPrimaryVariant</item>
+        <!-- TODO - this should be a gradient -->
+        <item name="mountainAreaColor">?attr/colorPrimary</item>
+
+        <!-- LineSeries defaults -->
+        <item name="lineSeriesColor">?attr/colorPrimary</item>
+
+        <!-- ColumnSeries defaults -->
+        <item name="columnLineColor">?attr/colorPrimary</item>
+        <item name="columnFillColor">?attr/colorPrimary</item>
+
+        <!-- CandlestickSeries defaults -->
+        <item name="candleStickStrokeUpColor">?attr/colorPrimaryVariant</item>
+        <item name="candleStickStrokeDownColor">?attr/colorPrimary</item>
+        <item name="candleStickFillUpColor">?attr/colorPrimaryVariant</item>
+        <item name="candleStickFillDownColor">?attr/colorPrimary</item>
+
+        <!-- BandSeries defaults -->
+        <item name="bandStrokeUpColor">?attr/colorPrimaryVariant</item>
+        <item name="bandStrokeDownColor">?attr/colorPrimary</item>
+        <item name="bandFillUpColor">?attr/colorPrimaryVariant</item>
+        <item name="bandFillDownColor">?attr/colorPrimary</item>
+    </style>
 </resources>

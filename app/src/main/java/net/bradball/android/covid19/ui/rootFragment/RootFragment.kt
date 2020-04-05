@@ -50,6 +50,18 @@ class RootFragment : DaggerFragment() {
         return views.root
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.loadData()
+
+        viewModel.getCases("jefferson").observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            val chartData = XyDataSeries<Date,Int>()
+            it.forEach { dailyCases ->
+                chartData.append(dailyCases.date, dailyCases.cases)
+            }
+        })
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
@@ -60,20 +72,32 @@ class RootFragment : DaggerFragment() {
         SciChartBuilder.init(requireContext())
         //ThemeManager.applyTheme(views.scichart, , requireContext())
         views.scichart.setBackgroundColor(requireContext().getColorFromAttr(R.attr.colorSurface))
+        views.scichart.theme = R.style.SciChart_KY_Covid
         // Obtain the SciChartBuilder instance
         val sciChartBuilder = SciChartBuilder.instance()
         // Create a numeric X axis
         val xAxis: IAxis = sciChartBuilder.newNumericAxis()
-            .withAxisTitle("Kentucky")
             .withDrawMinorGridLines(false)
             .withDrawMinorTicks(false)
+            .withDrawMajorTicks(false)
             .withDrawMajorBands(false)
+            .withDrawMajorGridLines(false)
             .build()
         // Create a numeric Y axis
+
+        val font = sciChartBuilder.newFont()
+            .withAntiAliasing(true)
+            .withTextSize(10.0F)
+            .build()
         val yAxis: IAxis = sciChartBuilder.newNumericAxis()
-            .withDrawLabels(false)
-            .withDrawMajorGridLines(false)
+            .withDrawLabels(true)
+            .withAutoTicks(false)
+            .withMajorDelta(50.0)
+            .withMinorDelta(10.0)
+            //.withTickLabelStyle(font)
+            .withDrawMajorGridLines(true)
             .withDrawMinorGridLines(false)
+            .withMajorGridLineStyle(requireContext().getColorFromAttr(R.attr.colorSurface), 1.5f, true)
             .withDrawMajorTicks(false)
             .withDrawMinorTicks(false)
             .withDrawMajorBands(false)
@@ -81,14 +105,14 @@ class RootFragment : DaggerFragment() {
 //            .withVisibleRange(0.0, 100.0)
             .build()
         // Create a TextAnnotation and specify the inscription and position for it
-        val textAnnotation = sciChartBuilder.newTextAnnotation()
-            .withX1(5.0)
-            .withY1(55.0)
-            .withText("Hello World!")
-            .withHorizontalAnchorPoint(HorizontalAnchorPoint.Center)
-            .withVerticalAnchorPoint(VerticalAnchorPoint.Center)
-            .withFontStyle(20f, ColorUtil.White)
-            .build()
+//        val textAnnotation = sciChartBuilder.newTextAnnotation()
+//            .withX1(5.0)
+//            .withY1(55.0)
+//            .withText("Hello World!")
+//            .withHorizontalAnchorPoint(HorizontalAnchorPoint.Center)
+//            .withVerticalAnchorPoint(VerticalAnchorPoint.Center)
+//            .withFontStyle(20f, ColorUtil.White)
+//            .build()
         // Create interactivity modifiers
         val chartModifiers = sciChartBuilder.newModifierGroup()
             .withPinchZoomModifier().withReceiveHandledEvents(true).build()
@@ -106,7 +130,7 @@ class RootFragment : DaggerFragment() {
         // Add the X axis to the XAxes collection of the surface
         Collections.addAll(views.scichart.getXAxes(), xAxis)
         // Add the annotation to the Annotations collection of the surface
-        Collections.addAll(views.scichart.getAnnotations(), textAnnotation)
+        //Collections.addAll(views.scichart.getAnnotations(), textAnnotation)
         // Add the interactions to the ChartModifiers collection of the surface
         Collections.addAll(views.scichart.getChartModifiers(), chartModifiers)
         Collections.addAll(views.scichart.getChartModifiers(), cursorModifier)
@@ -126,7 +150,7 @@ class RootFragment : DaggerFragment() {
 
         val lineSeries = sciChartBuilder.newLineSeries()
             .withDataSeries(chartData)
-            .withStrokeStyle(requireContext().getColorFromAttr(R.attr.colorPrimary))
+            .withStrokeStyle(requireContext().getColorFromAttr(R.attr.colorPrimary), 1.5f, true)
             .build()
 
         views.scichart.renderableSeries.add(lineSeries)
